@@ -2,9 +2,11 @@
 ## Dokumentasi PMB H2H STIE Assholeh dengan BPD Jateng
 
 * [Authentication](#authentication)
-* [Inquiry Data Tagihan](#inquiri)
-* [Pembayaran Data Tagihan](#pembayaran)
-* [Reversal](#reversal)
+* [Inquiry Data Tagihan](#inquiri-data-tagihan)
+  * [Semua Data Tagihan](#semua-data-tagihan)
+  * [Per Calon Mahasiswa](#data-tagihan-per-calon-mahasiswa)
+* [Pembayaran Data Tagihan](#pembayaran-tagihan)
+* [Pembatalan Pembayaran Tagihan](#pembatalan-pembayaran-tagihan)
 
 #### Production URL
 ````sh
