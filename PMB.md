@@ -1,9 +1,10 @@
-## Dokumentasi H2H STIE Assholeh dengan BPD Jateng
+### [&laquo; Home](README.md)
+## Dokumentasi PMB H2H STIE Assholeh dengan BPD Jateng
 
-[Authentication](#authentication)
-[Inquiry Data Tagihan](#inquiri)
-[Pembayaran Data Tagihan](#pembayaran)
-[Reversal](#reversal)
+* [Authentication](#authentication)
+* [Inquiry Data Tagihan](#inquiri)
+* [Pembayaran Data Tagihan](#pembayaran)
+* [Reversal](#reversal)
 
 #### Production URL
 + [https://api.stie-assholeh.ac.id/v1]
@@ -17,10 +18,11 @@
 ### Authenticate
 Mendapatkan token untuk setiap permintaan ke server. Tidak dapat digunakan dengan Development URL.
 
-+ Use `POST` http method.
+##### Method
+  _GET_
 
 ##### End Point
-+ [/token]()
+  _[/token]_()
 
 ##### Parameters
 None
