@@ -211,17 +211,16 @@ Failed response:
 ## Pembayaran Tagihan
 Menyimpan data pembayaran calon mahasiswa
 
-### Semua Data Tagihan
-#### Method
+### Method
   _PUT_
 
-#### End Point
+### End Point
   _/pmb_
 
-#### HTTPHEADER
+### HTTPHEADER
   _"Authorization:token"_
 
-#### Parameters
+### Parameters
 + `nim`: nim/ kode pendaftaran. numerik.
 + `bank`: kode bank pengirim
 + `tgl_transaksi`: tanggal transaksi. terdiri dari yyyymmdd
@@ -232,15 +231,13 @@ Menyimpan data pembayaran calon mahasiswa
     + `kode_tagihan`: kode tagihan
     + `amount`: nominal yang dibayarkan
 
-#### Contoh Request
+### Contoh Request
 ````php
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
   CURLOPT_URL => "https://www.api.stie-assholeh.ac.id/v1/pmb",
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "PUT",
   CURLOPT_POSTFIELDS => "{nim: 123456789,bank: 113,tgl_transaksi: 20160722,channel: 6010,device: W099001,noreff: t4512fg78r,bayar: [{kode_tagihan: A1,amount: 3000000}, {kode_tagihan: A2,amount: 1500000}]}",
   CURLOPT_HTTPHEADER => array(
@@ -256,7 +253,7 @@ echo $response;
 
 ````
 
-#### Contoh Response
+### Contoh Response
 Success response:
 ````json
 {
@@ -264,6 +261,69 @@ Success response:
     "nim": "12013011003",
     "response_code": "00",
     "response_code_desc": "Posting Berhasil"
+}
+````
+
+Failed response:
+````json
+{
+    "status": "ERROR",
+    "message": "Data tidak ditemukan",
+    "response_code": "24",
+    "response_code_desc": "NIM & Data Tagihan Tidak Ditemukan"
+}
+````
+
+
+## Pembatalan Pembayaran Tagihan
+Membatalkan pembayaran calon mahasiswa
+
+### Method
+  _POST_
+
+### End Point
+  _/pmb_
+
+### HTTPHEADER
+  _"Authorization:token"_
+
+### Parameters
++ `nim`: nim/ kode pendaftaran. numerik.
++ `bank`: kode bank pengirim
++ `tgl_transaksi`: tanggal transaksi. terdiri dari yyyymmdd
++ `channel`: channel pembayaran
++ `device`: device
++ `noreff`: nomor referensi pembayaran. harus unik.
+
+### Contoh Request
+````php
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://www.api.stie-assholeh.ac.id/dev/pmb",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => array('nim' => '12013011003','bank' => '113','tgl_transaksi' => '20200722','channel' => '6010','device' => 'W099001','noreff' => 't4512fg78r'),
+  CURLOPT_HTTPHEADER => array(
+    "Authorization: tokenkey-get-from-auth",
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+
+````
+
+### Contoh Response
+Success response:
+````json
+{
+    "status": "OK",
+    "nim": "12013011003",
+    "response_code": "00",
+    "response_code_desc": "Reversal Berhasil"
 }
 ````
 
